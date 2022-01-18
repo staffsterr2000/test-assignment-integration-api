@@ -1,15 +1,22 @@
 package com.staffsterr2000.integrationapi.controller;
 
+import com.staffsterr2000.integrationapi.exception.UnsuccessfulOperationException;
 import com.staffsterr2000.integrationapi.model.entity.BankApplication;
 import com.staffsterr2000.integrationapi.model.entity.IntegrationApplication;
+import com.staffsterr2000.integrationapi.model.entity.Response;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
+import reactor.netty.http.client.HttpClientResponse;
 
 import java.util.List;
 
@@ -20,7 +27,7 @@ public class ApplicationController {
 
     // TODO: security
     @PostMapping
-    public Mono<String> save(@RequestBody IntegrationApplication integrationApplication) {
+    public String save(@RequestBody IntegrationApplication integrationApplication) {
         String username = "admin";
         String password = "password";
         WebClient client = WebClient.builder().filter(ExchangeFilterFunctions
@@ -36,10 +43,9 @@ public class ApplicationController {
                 .uri("http://localhost:8082/applications")
                 .body(Mono.just(bankApplication), BankApplication.class)
                 .retrieve()
-                // TODO: handle bad_request
-//                .onStatus(HttpStatus.BAD_REQUEST::equals,
-//                        response -> response.bodyToMono(String.class).map(RuntimeException::new))
-                .bodyToMono(String.class);
+                .onStatus(HttpStatus.BAD_REQUEST::equals,
+                        response -> response.bodyToMono(String.class).map(UnsuccessfulOperationException::new))
+                .bodyToMono(String.class).block();
 
     }
 
