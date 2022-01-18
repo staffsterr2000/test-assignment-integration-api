@@ -1,24 +1,22 @@
 package com.staffsterr2000.integrationapi.model.entity;
 
+import com.staffsterr2000.integrationapi.model.enumeration.OperationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Application {
+public class Response {
 
-    private Applicant applicant;
+    private UUID id;
 
-    private Applicant coApplicant;
-
-    private Integer loanAmount;
-
-    private Integer termMonths;
-
-    private Integer id;
+    private OperationStatus status;
 
 }
+
