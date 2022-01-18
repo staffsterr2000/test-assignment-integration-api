@@ -3,20 +3,15 @@ package com.staffsterr2000.integrationapi.controller;
 import com.staffsterr2000.integrationapi.exception.UnsuccessfulOperationException;
 import com.staffsterr2000.integrationapi.model.entity.BankApplication;
 import com.staffsterr2000.integrationapi.model.entity.IntegrationApplication;
-import com.staffsterr2000.integrationapi.model.entity.Response;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
-import reactor.netty.http.client.HttpClientResponse;
 
 import java.util.List;
 
