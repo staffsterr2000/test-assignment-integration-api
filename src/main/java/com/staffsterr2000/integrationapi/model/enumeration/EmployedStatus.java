@@ -4,7 +4,7 @@ public enum EmployedStatus {
     EMPLOYED(true),
     UNEMPLOYED(false);
 
-    private Boolean isEmployed;
+    private final Boolean isEmployed;
 
     EmployedStatus(Boolean isEmployed) {
         this.isEmployed = isEmployed;
