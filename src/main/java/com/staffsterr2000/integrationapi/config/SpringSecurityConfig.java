@@ -53,12 +53,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .username("admin")
                 .password(passwordEncoder.encode("password"))
                 .authorities("ROLE_ADMIN").build();
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("password"))
-                .authorities("ROLE_USER").build();
 
-        return new InMemoryUserDetailsManager(admin, user);
+        return new InMemoryUserDetailsManager(admin);
     }
 
 }
