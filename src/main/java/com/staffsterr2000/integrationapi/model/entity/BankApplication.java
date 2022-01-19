@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class BankApplication {
 
-    private List<Applicant> applicants;
+    private List<BankApplicant> applicants;
 
     private Integer loanAmount;
 

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class IntegrationApplication {
 
-    private Applicant applicant;
+    private IntegrationApplicant applicant;
 
-    private Applicant coApplicant;
+    private IntegrationApplicant coApplicant;
 
     private Integer loanAmount;
 

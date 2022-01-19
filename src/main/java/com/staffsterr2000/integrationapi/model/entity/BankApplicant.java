@@ -1,6 +1,5 @@
 package com.staffsterr2000.integrationapi.model.entity;
 
-import com.staffsterr2000.integrationapi.model.enumeration.EmploymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,20 +11,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Applicant {
+public class BankApplicant {
 
-    private String firstName;
+    private String name;
 
-    private String lastName;
+    private String surname;
 
     private String email;
 
-    private EmploymentStatus employmentStatus;
+    private Boolean isEmployed;
 
     private LocalDate employedSince;
 
-    private Integer yearlyIncome;
+    private Integer monthlyIncome;
 
-    private Address address;
+    private String address;
 
 }
