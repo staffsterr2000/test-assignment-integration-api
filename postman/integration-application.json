@@ -1,0 +1,29 @@
+{
+    "applicant": {
+        "firstName": "Stas",
+        "lastName": "Stas",
+        "email": "stas@stas.com",
+        "employedStatus": "EMPLOYED",
+        "employedSince": "2021-12-10",
+        "yearlyIncome": 240000,
+        "address": {
+            "street": "street",
+            "houseNumber": 21
+        }
+    },
+    "coApplicant": {
+        "firstName": "Roman",
+        "lastName": "Roman",
+        "email": "roman@roman.com",
+        "employedStatus": "UNEMPLOYED",
+        "employedSince": null,
+        "yearlyIncome": null,
+        "address": {
+            "street": "street",
+            "houseNumber": 19
+        }
+    },
+    "loanAmount": 0,
+    "termMonths": 12,
+    "id": 1
+}
