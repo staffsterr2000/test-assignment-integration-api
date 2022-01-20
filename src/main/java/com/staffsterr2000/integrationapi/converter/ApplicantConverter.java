@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Component
@@ -16,6 +17,8 @@ public class ApplicantConverter implements Converter<IntegrationApplicant, BankA
 
     @Override
     public BankApplicant convert(IntegrationApplicant source) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String employedSince = Objects.isNull(source.getEmployedSince()) ? null : formatter.format(source.getEmployedSince());
         String address = String.format("%s %s", source.getAddress().getStreet(), source.getAddress().getHouseNumber());
         Boolean isEmployed = Objects.isNull(source.getEmployedStatus()) ? null : source.getEmployedStatus().getIsEmployed();
         Integer monthlyIncome = Objects.isNull(source.getYearlyIncome()) ? null : source.getYearlyIncome() / 12;
@@ -25,7 +28,7 @@ public class ApplicantConverter implements Converter<IntegrationApplicant, BankA
                 .surname(source.getLastName())
                 .email(source.getEmail())
                 .isEmployed(isEmployed)
-                .employedSince(source.getEmployedSince())
+                .employedSince(employedSince)
                 .monthlyIncome(monthlyIncome)
                 .address(address).build();
 
